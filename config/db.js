@@ -7,8 +7,18 @@ const dbConfig = {
   user: process.env.DB_USER || "root",
   password: process.env.DB_PASSWORD || "",
   database: process.env.DB_NAME || "hospital_management",
+  port: process.env.DB_PORT || 3306, // Add port from environment variable
   multipleStatements: true // Allows multiple queries if needed
 };
+
+// Log the configuration for debugging
+console.log('Database configuration:', {
+  host: dbConfig.host,
+  user: dbConfig.user,
+  password: '****', // Hide password for security
+  database: dbConfig.database,
+  port: dbConfig.port
+});
 
 // Create connection
 const db = mysql.createConnection(dbConfig);
