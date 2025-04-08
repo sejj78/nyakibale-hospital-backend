@@ -1,6 +1,6 @@
 // db.js
 require('dotenv').config(); // Load environment variables from .env file
-const mysql = require('mysql');
+const mysql = require('mysql2'); // Change to mysql2
 
 // Log all environment variables for debugging
 console.log('Environment variables:', {
