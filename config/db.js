@@ -2,12 +2,21 @@
 require('dotenv').config(); // Load environment variables from .env file
 const mysql = require('mysql');
 
+// Log all environment variables for debugging
+console.log('Environment variables:', {
+  DB_HOST: process.env.DB_HOST,
+  DB_USER: process.env.DB_USER,
+  DB_PASSWORD: '****', // Hide password for security
+  DB_NAME: process.env.DB_NAME,
+  DB_PORT: process.env.DB_PORT
+});
+
 const dbConfig = {
   host: process.env.DB_HOST || "localhost",
   user: process.env.DB_USER || "root",
   password: process.env.DB_PASSWORD || "",
   database: process.env.DB_NAME || "hospital_management",
-  port: process.env.DB_PORT || 3306, // Add port from environment variable
+  port: process.env.DB_PORT || 3306,
   multipleStatements: true // Allows multiple queries if needed
 };
 
