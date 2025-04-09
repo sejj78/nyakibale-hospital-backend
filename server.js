@@ -500,4 +500,5 @@ app.get("/api/doctors", async (req, res) => {
 
 // Starting the server with dynamic port
 const port = process.env.PORT || 5000;
+console.log(`Assigned PORT from environment: ${process.env.PORT}`);
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
