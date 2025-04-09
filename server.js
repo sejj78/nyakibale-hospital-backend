@@ -58,6 +58,20 @@ app.use(bodyParser.json());
 // Updated Database connection - import from config/db.js
 const db = require("./config/db");
 
+// Add error handling for uncaught exceptions and unhandled rejections
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+// Add health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Existing login endpoint
 app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
@@ -484,6 +498,6 @@ app.get("/api/doctors", async (req, res) => {
   res.json(doctors);
 });
 
-// Starting the server
+// Starting the server with dynamic port
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
